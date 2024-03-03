@@ -1,0 +1,29 @@
+{% extends 'main/simple.html' %}
+{% block list %}
+<ul class="list_product">
+    <h2>{{select}}:</h2>
+    {% if select == 'Products' %}
+        {% for product in array %}
+        <li><button class="btn btn-1 btn-sep">
+            <span class="t">{{product.price}} ₽</span>
+            <span class="t">{{product.title}}</span>
+            <span class="t">{{product.min_group}}-{{product.max_group}}</span>
+        </button></li>
+
+        <div align="left">
+        {% for lesson in lessons %}
+            {% if lesson.link == product.title %}
+                <a href="{{lesson.src}}">
+                    <span class="t">{{lesson.title}}</span>
+                </a>
+            <br>
+            {% endif %}
+        {% endfor %}
+        </div>
+
+        {% endfor %}
+
+    {% endif %}
+</ul>
+{% endblock %}
+
